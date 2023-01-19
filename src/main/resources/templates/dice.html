@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Roll the Dice !</title>
+</head>
+<body>
+
+<h1>Look a number has appeared: <span th:text="${number}"></span></h1>
+
+<form action="/roll-dice" method="post">
+    <h2> Guess a number from 1 to 6!</h2>
+    <input type="text" name="number"/>
+    <button>Submit</button>
+</form>
+<h2>Your guess was: <span th:text="${number}"></span></h2>
+</body>
+</html>
+
+
+<!--show page ✅-->
+<!--get info from view(html(number guessed))-->
+<!--pass info from controller to view (dice number) use logic to tell if guess was correct or not-->

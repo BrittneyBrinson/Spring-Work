@@ -5,6 +5,7 @@ import com.codeup.springwork.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.ArrayList;
@@ -22,15 +23,21 @@ private final PostRepository postRepo;
         return "posts/create";
     }
 
-//    @GetMapping("/show")
-//    public String showPost(Model model){
-//        Post newPost = new Post(postRepo);
-//        newPost.setTitle("Anyways, life is great");
-//        newPost.setBody("Great things are happening for me");
-//        model.addAttribute("title",newPost.getTitle());
-//        model.addAttribute("body", newPost.getBody());
-//        return "posts/show";
-//    }
+    @PostMapping("/create")
+    public String createPost(String title,Model model){
+        model.addAttribute("title", title);
+                return "create";
+    }
+
+    @GetMapping("/show")
+    public String showPost(Model model){
+        Post newPost = new Post(postRepo);
+        newPost.setTitle("Anyways, life is great");
+        newPost.setBody("Great things are happening for me");
+        model.addAttribute("title",newPost.getTitle());
+        model.addAttribute("body", newPost.getBody());
+        return "posts/show";
+    }
 
     @GetMapping("/showAll")
     public String showAllPosts(Model model){

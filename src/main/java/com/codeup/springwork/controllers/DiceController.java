@@ -14,10 +14,10 @@ public class DiceController {
         return "dice";
     }
 
-    @PostMapping("/roll-dice/{n}")
-    public String showGuess(@RequestParam(name = "number") int number, Model model){
-            model.addAttribute( number);
-            return "dice";
-    }
+//    @PostMapping("/roll-dice/")
+//    public String showGuess(@RequestParam(name = "number") String number, Model model){
+//            model.addAttribute("number", number);
+//            return "dice";
+//    }
 
 }

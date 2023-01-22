@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
@@ -24,9 +25,14 @@ private final PostRepository postRepo;
     }
 
     @PostMapping("/create")
-    public String createPost(String title,Model model){
+    public String createPost(@RequestParam(name = "title")String title,@RequestParam(name = "body")String body, Model model){
+        Post createdPost = new Post();
+        createdPost.setTitle(title);
+        createdPost.setBody(body);
         model.addAttribute("title", title);
-                return "create";
+        model.addAttribute("body", body);
+
+                return "redirect:/posts/index";
     }
 
     @GetMapping("/show")

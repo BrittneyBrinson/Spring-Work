@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DiceController {
-    @GetMapping("/roll-dice/")
-    public String showPage(){
+    @GetMapping("/roll-dice/{number}")
+    public String showPage(@PathVariable String number, Model model){
+        model.addAttribute(" number", number);
         return "dice";
     }
 
-//    @PostMapping("/roll-dice/")
-//    public String showGuess(@RequestParam(name = "number") String number, Model model){
-//            model.addAttribute("number", number);
-//            return "dice";
-//    }
+    @PostMapping("/roll-dice")
+    public String showGuess(@RequestParam(name = "number") String number, Model model){
+            model.addAttribute("number", number);
+            return "dice";
+    }
 
 }

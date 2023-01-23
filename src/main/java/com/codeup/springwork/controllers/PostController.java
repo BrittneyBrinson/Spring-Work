@@ -1,7 +1,8 @@
 package com.codeup.springwork.controllers;
 
-import com.codeup.springwork.Post;
-import com.codeup.springwork.PostRepository;
+import com.codeup.springwork.models.Post;
+import com.codeup.springwork.repositories.PostRepository;
+import com.codeup.springwork.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,11 @@ import java.util.ArrayList;
 public class PostController {
 private final PostRepository postRepo;
 
-    public PostController(PostRepository postRepo) {
+private final UserRepository userRepo;
+
+    public PostController(PostRepository postRepo, UserRepository userRepo) {
         this.postRepo = postRepo;
+        this.userRepo = userRepo;
     }
 
     @GetMapping("/create")

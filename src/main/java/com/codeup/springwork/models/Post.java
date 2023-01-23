@@ -1,4 +1,6 @@
-package com.codeup.springwork;
+package com.codeup.springwork.models;
+import com.codeup.springwork.repositories.PostRepository;
+
 import javax.persistence.*;
 
 
@@ -12,6 +14,9 @@ public class Post {
     private String title;
     @Column(nullable = false)
     private String body;
+
+    @OneToOne
+    private User user;
 
 
 

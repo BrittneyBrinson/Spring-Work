@@ -6,8 +6,10 @@ import com.codeup.springwork.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 import java.util.ArrayList;
@@ -30,12 +32,8 @@ private final UserRepository userRepo;
     }
 
     @PostMapping("/create")
-    public String createPost(@RequestParam(name = "title")String title,@RequestParam(name = "body")String body){
-        Post createdPost = new Post();
-        createdPost.setTitle(title);
-        createdPost.setBody(body);
-
-
+    public String createPost(@ModelAttribute Post newPost){
+        postRepo.save(newPost);
                 return "redirect:/posts/index";
     }
 
@@ -63,6 +61,13 @@ private final UserRepository userRepo;
         model.addAttribute("title", postList);
 
         return "posts/index";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String showEditForm(@PathVariable String id , Model model){
+        model.addAttribute("id", id);
+        model.addAttribute("post", new Post());
+        return "posts/edit";
     }
 
 

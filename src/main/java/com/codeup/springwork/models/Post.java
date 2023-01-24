@@ -18,8 +18,6 @@ public class Post {
     @OneToOne
     private User user;
 
-
-
     public Post(PostRepository postRepo) {
         this.title = title;
         this.body = body;

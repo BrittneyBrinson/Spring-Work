@@ -24,17 +24,17 @@ private final UserRepository userRepo;
     }
 
     @GetMapping("/create")
-    public String showCreateForm(){
+    public String showCreateForm(Model model){
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/create")
-    public String createPost(@RequestParam(name = "title")String title,@RequestParam(name = "body")String body, Model model){
+    public String createPost(@RequestParam(name = "title")String title,@RequestParam(name = "body")String body){
         Post createdPost = new Post();
         createdPost.setTitle(title);
         createdPost.setBody(body);
-        model.addAttribute("title", title);
-        model.addAttribute("body", body);
+
 
                 return "redirect:/posts/index";
     }

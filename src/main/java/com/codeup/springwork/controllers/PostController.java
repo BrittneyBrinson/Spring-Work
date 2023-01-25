@@ -65,7 +65,7 @@ private final UserRepository userRepo;
 
     @GetMapping("/posts/{id}/edit")
     public String showEditForm(@PathVariable long id , Model model){
-        model.addAttribute("id", id);
+//        Post viewPost = postRepo.getReferenceById(id);
         model.addAttribute("post", new Post());
         return "posts/edit";
     }

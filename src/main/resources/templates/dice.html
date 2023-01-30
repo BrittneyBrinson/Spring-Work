@@ -6,13 +6,21 @@
 </head>
 <body>
  <h1>The die rolled on: </h1>
+<!-- What I need to do in steps.-->
+<!-- Passing data to views-->
+<!-- step 1: create a page with the mapping to "/roll-dice/n". Next this page should ask the user(ME) to guess a number
+       step 2: The page should have links to number one through 6(Reference the guess through variables) AKA Say your guess was).
+        step 3: The form on the page should make a get request to /roll/-dice/n (n is the number guessed ()))
+           step 4: The page must show a random number(die roll), the users guess, message if they (I)guessed correctly-->
 
 <form action="/roll-dice" method="post">
     <h2> Guess a number from 1 to 6!</h2>
     <input type="text" name="number"/>
     <button>Submit</button>
 </form>
-<h2>Your guess was: <span th:text="${number}"></span></h2>
+<h2>Your guess was: <span th:text="${n}"></span></h2>
+
+ </form>
 </body>
 </html>
 

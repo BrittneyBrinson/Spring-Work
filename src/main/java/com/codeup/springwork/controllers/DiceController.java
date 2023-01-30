@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DiceController {
-    @GetMapping("/roll-dice/{number}")
-    public String showPage(@PathVariable String number, Model model){
-        model.addAttribute(" number", number);
+    @GetMapping("/roll-dice/{n}")
+    public String showPage(@PathVariable String n, Model model){
+        model.addAttribute("n", n);
         return "dice";
     }
 

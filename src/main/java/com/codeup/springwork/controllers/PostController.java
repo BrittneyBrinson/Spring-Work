@@ -3,6 +3,7 @@ package com.codeup.springwork.controllers;
 import com.codeup.springwork.models.Post;
 import com.codeup.springwork.repositories.PostRepository;
 import com.codeup.springwork.repositories.UserRepository;
+import com.codeup.springwork.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +21,12 @@ private final PostRepository postRepo;
 
 private final UserRepository userRepo;
 
-    public PostController(PostRepository postRepo, UserRepository userRepo) {
+private EmailService emailService;
+
+    public PostController(PostRepository postRepo, UserRepository userRepo, EmailService emailService) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
+        this.emailService = emailService;
     }
 
     @GetMapping("/create")

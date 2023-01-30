@@ -44,5 +44,7 @@ public class Post {
         this.body = body;
     }
 
-
+    public User getUser() {
+        return user;
+    }
 }

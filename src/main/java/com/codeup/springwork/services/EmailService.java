@@ -1,6 +1,8 @@
 package com.codeup.springwork.services;
 
 import com.codeup.springwork.models.Post;
+import com.codeup.springwork.repositories.PostRepository;
+import com.codeup.springwork.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -12,11 +14,11 @@ import org.springframework.stereotype.Service;
 @Service("emailService")
 public class EmailService {
 
-
-    public JavaMailSender emailSender;
+    private JavaMailSender emailSender;
 
     @Value("${spring.mail.from}")
     private String from;
+
 
     public void sendEmail(Post post, String title, String body){
         SimpleMailMessage message = new SimpleMailMessage();

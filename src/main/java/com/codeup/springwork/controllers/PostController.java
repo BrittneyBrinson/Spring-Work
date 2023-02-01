@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-
 import java.util.ArrayList;
 
 @Controller
 public class PostController {
-private final PostRepository postRepo;
+    private final PostRepository postRepo;
 
-private final UserRepository userRepo;
+    private final UserRepository userRepo;
 
-private EmailService emailService;
+    private final EmailService emailService;
 
     public PostController(PostRepository postRepo, UserRepository userRepo, EmailService emailService) {
         this.postRepo = postRepo;
@@ -30,29 +29,29 @@ private EmailService emailService;
     }
 
     @GetMapping("/create")
-    public String showCreateForm(Model model){
+    public String showCreateForm(Model model) {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/create")
-    public String createPost(@ModelAttribute Post newPost){
+    public String createPost(@ModelAttribute Post newPost) {
         postRepo.save(newPost);
-                return "redirect:/posts/index";
+        return "redirect:/posts/index";
     }
 
     @GetMapping("/show")
-    public String showPost(Model model){
+    public String showPost(Model model) {
         Post newPost = new Post(postRepo);
         newPost.setTitle("Anyways, life is great");
         newPost.setBody("Great things are happening for me");
-        model.addAttribute("title",newPost.getTitle());
+        model.addAttribute("title", newPost.getTitle());
         model.addAttribute("body", newPost.getBody());
         return "posts/show";
     }
 
     @GetMapping("/showAll")
-    public String showAllPosts(Model model){
+    public String showAllPosts(Model model) {
         Post postOne = new Post(postRepo);
         postOne.setTitle("I'm going to Denver next week");
         postOne.setBody("It's going to be soo much fun");
@@ -68,7 +67,7 @@ private EmailService emailService;
     }
 
     @GetMapping("/posts/{id}/edit")
-    public String showEditForm(@PathVariable long id , Model model){
+    public String showEditForm(@PathVariable long id, Model model) {
 //        Post viewPost = postRepo.getReferenceById(id);
         model.addAttribute("post", new Post());
         return "posts/edit";

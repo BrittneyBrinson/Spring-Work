@@ -68,7 +68,6 @@ public class PostController {
 
     @GetMapping("/posts/{id}/edit")
     public String showEditForm(@PathVariable long id, Model model) {
-//        Post viewPost = postRepo.getReferenceById(id);
         model.addAttribute("post", new Post());
         return "posts/edit";
     }
